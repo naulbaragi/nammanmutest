@@ -40,12 +40,14 @@ function App() {
           <h4>{date}</h4>
         </div>
         <div className='list'>
-          <h1>콘서트시 무대 순서<span onClick={function(){j[1]}} >눌러보세요</span> {눌러보세요}</h1>
+        <h2> 콘서트 무대 순서 <span onClick={() => {
+          let copy = [...j]; copy[0] = '나얼'; k(copy)}}>순서</span></h2>
           <h2>{j[0]}</h2>
           <h2> {j[1]}</h2>
           <h2>{j[2]}</h2>
           <h2> {j[3]}</h2>
         </div>
+        <button onClick={() => {let copy2 = [...j.sort()];k(copy2)}} >정렬</button>
         </div>
   );
 }
