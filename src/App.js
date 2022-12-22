@@ -11,6 +11,7 @@ function App() {
   let [j,k] = useState(['정엽','나얼','성훈','영준']);
   let date = '2022년 12월 22일';
   let [좋아요함수,fun] = useState(0);
+  let [dynamic,setdynamic] = useState(true);
   // let temp = 0;
 
 
@@ -48,8 +49,27 @@ function App() {
           <h2> {j[3]}</h2>
         </div>
         <button onClick={() => {let copy2 = [...j.sort()];k(copy2)}} >정렬</button>
+        <div className='modal'>
+          <h4>제목</h4>
+          <p>날짜</p>
+          <p>상세 내용</p>
+        </div>
+        <button onClick = {dynamic == false ? () => {setdynamic(true)} :()=>{setdynamic(false)}}>버튼</button>
+        {
+            dynamic == false ? <Modal></Modal>:null
+        }
         </div>
   );
+}
+
+function Modal(){
+  return(
+    <div className='modal'>
+          <h4>제목</h4>
+          <p>날짜</p>
+          <p>상세 내용</p>
+        </div>
+  )
 }
 
 export default App;
