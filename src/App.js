@@ -75,7 +75,8 @@ function App() {
         
         <Modal></Modal>
         <input onChange={(e)=>tempchange(e.target.value)}></input>
-        <button onClick = {()=>{let pope = [...j];pope.unshift(temp);k(pope)}}>버튼</button>-
+        <button onClick = {()=>{let pope = [...j];pope.unshift(temp);k(pope)}}>등록</button>
+        {/* <button onClick = {()=>{let dele = [...j];dele.splice(i,1);k(dele)}}>삭제</button> */}
 
         {
           j.map(function(z,i){
@@ -85,11 +86,13 @@ function App() {
                             {
                   dynamic == true ? <Modal key ={i}></Modal>:null
               }
+              
             <h2><span onClick={() => {
               let type = [...좋아요함수]; 
               type[i] = type[i]+1; 
               fun(type);
               }}>좋아요</span> {좋아요함수[z]} </h2>
+              <button onClick = {()=>{let dele = [...j];dele.splice(i,1);k(dele)}}>삭제</button>
             <h4> 성시경 - 아픈 나를</h4>
             <h4> {c}</h4>
             <h4>{z}</h4>
