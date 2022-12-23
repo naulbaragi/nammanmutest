@@ -11,7 +11,8 @@ function App() {
   let [j,k] = useState(['정엽','나얼','성훈','영준']);
   let date = '2022년 12월 22일';
   let [좋아요함수,fun] = useState([0,0,0]);
-  let [dynamic,setdynamic] = useState(true);
+  let [dynamic,setdynamic] = useState([true,true,true]);
+  let [temp,tempchange] = useState('');
 
 
   // [1,2,3].map(function(a,i){
@@ -36,7 +37,7 @@ function App() {
       </div>
       <h1> {post} </h1>
       <div className='list'>
-        <h2> Ballad Pop City <span onClick={() => {fun(좋아요함수+1)}}>좋아요</span> {좋아요함수} </h2>
+        <h2>Ballad Pop City <span onClick={() => {fun(좋아요함수+1)}}>좋아요</span> {좋아요함수} </h2>
         <h4> 성시경 - 아픈 나를</h4>
         <h4> {c}</h4>
         <h4>{a}</h4>
@@ -69,24 +70,38 @@ function App() {
             dynamic == true ? <Modal></Modal>:null
         }
 
-        {
-          <Modal pprops = {j} 글수정 = {function change_member(){let copy = [...j]; copy[0] = '나얼'; k(copy);}}/>
-        }
+      
+        <Modal pprops = {j} 글수정 = {function change_member(){let copy = [...j]; copy[0] = '나얼'; k(copy);}}/>
+        
         <Modal></Modal>
+        <input onChange={(e)=>tempchange(e.target.value)}></input>
+        <button onClick = {()=>{let pope = [...j];pope.unshift(temp);k(pope)}}>버튼</button>-
 
         {
-          [0,1,2].map(function(z,i){
-            return (<div className='list' key={i}>
-            <h2> Ballad Pop City <span onClick={() => {let type = [...좋아요함수]; type[i] = type[i]+1; fun(type)}}>좋아요</span> {좋아요함수[z]} </h2>
+          j.map(function(z,i){
+            return (<div className='list' id={i}>
+            <h1><span onClick={
+           dynamic == false ? () => {setdynamic(true)} :()=>{setdynamic(false)}}>Ballad</span></h1>
+                            {
+                  dynamic == true ? <Modal key ={i}></Modal>:null
+              }
+            <h2><span onClick={() => {
+              let type = [...좋아요함수]; 
+              type[i] = type[i]+1; 
+              fun(type);
+              }}>좋아요</span> {좋아요함수[z]} </h2>
             <h4> 성시경 - 아픈 나를</h4>
             <h4> {c}</h4>
             <h4>{z}</h4>
             <h4>{date}</h4>
+                            {
+                  dynamic == true ? <Modal key ={i}></Modal>:null
+              }
           </div>)
           })
         }
 
-          <Modal></Modal>
+        <Modal></Modal>
         </div>
 
         
