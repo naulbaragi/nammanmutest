@@ -66,8 +66,13 @@ function App() {
         </div>
         <button onClick = {dynamic == false ? () => {setdynamic(true)} :()=>{setdynamic(false)}}>버튼</button>
         {
-            dynamic == false ? <Modal></Modal>:null
+            dynamic == true ? <Modal></Modal>:null
         }
+
+        {
+          <Modal pprops = {j} 글수정 = {function change_member(){let copy = [...j]; copy[0] = '나얼'; k(copy);}}/>
+        }
+        <Modal></Modal>
 
         {
           [0,1,2].map(function(z,i){
@@ -80,16 +85,21 @@ function App() {
           </div>)
           })
         }
+
+          <Modal></Modal>
         </div>
+
+        
   );
 }
 
-function Modal(){
+function Modal(props){
   return(
     <div className='modal'>
-          <h4>제목</h4>
+          <h4>{props.pprops}</h4>
           <p>날짜</p>
           <p>상세 내용</p>
+          <button onClick = {props.글수정}>글수정</button>
         </div>
   )
 }
